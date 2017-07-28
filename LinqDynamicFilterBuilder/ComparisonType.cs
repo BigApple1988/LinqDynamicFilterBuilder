@@ -10,6 +10,7 @@
         NotEqual,
         Contains, 
         StartsWith, 
-        EndsWith 
+        EndsWith ,
+        Skip
     }
 }

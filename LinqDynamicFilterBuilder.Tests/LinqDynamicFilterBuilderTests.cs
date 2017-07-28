@@ -54,12 +54,19 @@ namespace LinqDynamicFilterBuilder.Tests
             //получение элементов с айдишниками виртуального свойства больше 5
             var filter = new SampleFilter()
             {
-                VirtualEntityId = 5
+                VirtualEntityId = 5,SkippedProperty = true
             };
             var result = repo.GetFiltered(filter);
             Assert.True(result.Count==2); //получаем два элемента
-            
-            
+            filter = new SampleFilter();
+            result = repo.GetFiltered(filter);
+            Assert.True(result.Count == 3); //получаем все элементы
+            filter = new SampleFilter
+            {
+                SkippedProperty = true
+            };
+            result = repo.GetFiltered(filter);
+            Assert.True(result.Count == 3); //получаем все элементы
         }
         [Fact]
         public void FindByIdTest()
