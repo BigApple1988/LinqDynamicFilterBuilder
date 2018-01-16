@@ -13,6 +13,7 @@
     <Copyright>Andrey Berezniker</Copyright>
     <PackageProjectUrl>https://github.com/BigApple1988/LinqDynamicFilterBuilder</PackageProjectUrl>
     <RepositoryUrl>https://github.com/BigApple1988/LinqDynamicFilterBuilder</RepositoryUrl>
+    <PackageLicenseUrl>https://github.com/BigApple1988/LinqDynamicFilterBuilder/blob/master/LICENSE.md</PackageLicenseUrl>
     <FileVersion>0.0.0.2</FileVersion>
   </PropertyGroup>
 
