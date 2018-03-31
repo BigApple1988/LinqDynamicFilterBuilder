@@ -1,11 +1,10 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
-
   <PropertyGroup>
-    <TargetFramework>netcoreapp1.1</TargetFramework>
-    <AssemblyVersion>0.0.0.2</AssemblyVersion>
+    <TargetFramework>netstandard1.6</TargetFramework>
+    <AssemblyVersion>0.0.0.4</AssemblyVersion>
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
     <PackageId>Bam.LinqDynamicFilterBuilder</PackageId>
-    <Version>0.0.2</Version>
+    <Version>0.0.4</Version>
     <Authors>Andrey Berezniker</Authors>
     <Company>Andrey Berezniker</Company>
     <Product>Linq Dynamic Filter Builder</Product>
@@ -14,11 +13,9 @@
     <PackageProjectUrl>https://github.com/BigApple1988/LinqDynamicFilterBuilder</PackageProjectUrl>
     <RepositoryUrl>https://github.com/BigApple1988/LinqDynamicFilterBuilder</RepositoryUrl>
     <PackageLicenseUrl>https://github.com/BigApple1988/LinqDynamicFilterBuilder/blob/master/LICENSE.md</PackageLicenseUrl>
-    <FileVersion>0.0.0.2</FileVersion>
+    <FileVersion>0.0.0.4</FileVersion>
   </PropertyGroup>
-
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
     <PlatformTarget>x86</PlatformTarget>
   </PropertyGroup>
-
 </Project>
