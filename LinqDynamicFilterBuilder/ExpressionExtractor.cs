@@ -6,7 +6,7 @@ namespace LinqDynamicFilterBuilder
 {
     public class ExpressionExtractor
     {
-        private static readonly MethodInfo ContainsMethod = typeof(string).GetTypeInfo().GetMethod("Contains");
+        private static readonly MethodInfo ContainsMethod = typeof(string).GetTypeInfo().GetMethod("Contains", new Type[] { typeof(string) });
         private static readonly MethodInfo StartsWithMethod = typeof(string).GetTypeInfo().GetMethod("StartsWith", new Type[] { typeof(string) });
         private static readonly MethodInfo EndsWithMethod = typeof(string).GetTypeInfo().GetMethod("EndsWith", new Type[] { typeof(string) });
 
