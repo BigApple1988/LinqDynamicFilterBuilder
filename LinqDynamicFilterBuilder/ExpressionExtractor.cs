@@ -1,14 +1,23 @@
-﻿using System;
+﻿#region
+
+using System;
 using System.Linq.Expressions;
 using System.Reflection;
+
+#endregion
 
 namespace LinqDynamicFilterBuilder
 {
     public class ExpressionExtractor
     {
-        private static readonly MethodInfo ContainsMethod = typeof(string).GetTypeInfo().GetMethod("Contains", new Type[] { typeof(string) });
-        private static readonly MethodInfo StartsWithMethod = typeof(string).GetTypeInfo().GetMethod("StartsWith", new Type[] { typeof(string) });
-        private static readonly MethodInfo EndsWithMethod = typeof(string).GetTypeInfo().GetMethod("EndsWith", new Type[] { typeof(string) });
+        private static readonly MethodInfo ContainsMethod =
+            typeof(string).GetTypeInfo().GetMethod("Contains", new Type[] {typeof(string)});
+
+        private static readonly MethodInfo StartsWithMethod =
+            typeof(string).GetTypeInfo().GetMethod("StartsWith", new Type[] {typeof(string)});
+
+        private static readonly MethodInfo EndsWithMethod =
+            typeof(string).GetTypeInfo().GetMethod("EndsWith", new Type[] {typeof(string)});
 
         private static MemberExpression GetEndpointProperty(ParameterExpression param, ExpressionFilter filter)
         {
@@ -17,17 +26,18 @@ namespace LinqDynamicFilterBuilder
             {
                 return null;
             }
+
             var expression = Expression.Property(param, properties[0]);
             for (var i = 1; i < properties.Length; i++)
             {
                 expression = Expression.Property(expression, properties[i]);
             }
+
             return expression;
         }
 
         public static Expression GetExpression<T>(ParameterExpression param, ExpressionFilter filter)
         {
-
             MemberExpression member = GetEndpointProperty(param, filter);
             ConstantExpression constant = Expression.Constant(filter.Value, member.Type);
             switch (filter.ComparisonType)
@@ -55,5 +65,4 @@ namespace LinqDynamicFilterBuilder
             }
         }
     }
-
 }

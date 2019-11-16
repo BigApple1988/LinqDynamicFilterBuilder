@@ -1,12 +1,13 @@
-﻿using System;
+﻿#region
+
+using System;
+
+#endregion
 
 namespace LinqDynamicFilterBuilder
 {
-    public class ComparisonAttribute :Attribute
+    public class ComparisonAttribute : Attribute
     {
-        public ComparisonType ComparisonType { get; set; }
-        public string PropertyName { get; set; }
-
         public ComparisonAttribute(ComparisonType comparisonType)
         {
             ComparisonType = comparisonType;
@@ -17,5 +18,8 @@ namespace LinqDynamicFilterBuilder
             ComparisonType = comparisonType;
             PropertyName = propertyName;
         }
+
+        public ComparisonType ComparisonType { get; set; }
+        public string PropertyName { get; set; }
     }
 }

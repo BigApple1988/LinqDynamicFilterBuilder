@@ -1,14 +1,19 @@
-﻿using System.Collections.Generic;
+﻿#region
+
+using System.Collections.Generic;
 using System.Linq;
 using LinqDynamicFilterBuilder.Example.DAL;
 using LinqDynamicFilterBuilder.Example.Filters;
 using LinqDynamicFilterBuilder.Example.Repositories;
 using Xunit;
+
+#endregion
+
 namespace LinqDynamicFilterBuilder.Tests
 {
     public class LinqDynamicFilterBuilderTests
     {
-        ExampleContext _context = new ExampleContext()
+        private readonly ExampleContext _context = new ExampleContext()
         {
             SampleEntities = new List<SampleEntity>
             {
@@ -39,24 +44,30 @@ namespace LinqDynamicFilterBuilder.Tests
                         SomeValue = "seven"
                     }
                 }
-
             }.AsQueryable()
         };
 
-                       
+        [Fact]
+        public void FindByIdTest()
+        {
+            var id = 3;
+            var repo = new SampleRepository(_context);
+            var result = repo.FindById(id);
+            Assert.True(result.SampleEntityId == id);
+        }
+
 
         [Fact]
         public void GetFilteredTest()
         {
-           
             var repo = new SampleRepository(_context);
             //получение элементов с айдишниками виртуального свойства больше 5
             var filter = new SampleFilter()
             {
-                VirtualEntityId = 5,SkippedProperty = true
+                VirtualEntityId = 5, SkippedProperty = true
             };
             var result = repo.GetFiltered(filter);
-            Assert.True(result.Count==2); //получаем два элемента
+            Assert.True(result.Count == 2); //получаем два элемента
             filter = new SampleFilter();
             result = repo.GetFiltered(filter);
             Assert.True(result.Count == 3); //получаем все элементы
@@ -66,16 +77,6 @@ namespace LinqDynamicFilterBuilder.Tests
             };
             result = repo.GetFiltered(filter);
             Assert.True(result.Count == 3); //получаем все элементы
-        }
-        [Fact]
-        public void FindByIdTest()
-        {
-            var id = 3;
-            var repo = new SampleRepository(_context);
-            var result = repo.FindById(id);
-            Assert.True(result.SampleEntityId==id); 
-
-
         }
     }
 }

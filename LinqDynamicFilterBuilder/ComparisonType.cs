@@ -8,9 +8,9 @@
         GreaterThan,
         GreaterThanOrEqual,
         NotEqual,
-        Contains, 
-        StartsWith, 
-        EndsWith ,
+        Contains,
+        StartsWith,
+        EndsWith,
         Skip
     }
 }

@@ -1,7 +1,11 @@
-﻿using System;
+﻿#region
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
+
+#endregion
 
 namespace LinqDynamicFilterBuilder
 {
@@ -15,12 +19,13 @@ namespace LinqDynamicFilterBuilder
             {
                 return null;
             }
+
             ParameterExpression param = Expression.Parameter(typeof(T), "t");
             Expression exp = null;
 
             foreach (var expressionFilter in filters)
             {
-                if(expressionFilter.ComparisonType==ComparisonType.Skip) continue;
+                if (expressionFilter.ComparisonType == ComparisonType.Skip) continue;
                 if (expressionFilter.Value != null)
                 {
                     if (exp == null)
@@ -29,9 +34,9 @@ namespace LinqDynamicFilterBuilder
                     {
                         exp = Expression.And(exp, ExpressionExtractor.GetExpression<T>(param, expressionFilter));
                     }
-
                 }
             }
+
             return Expression.Lambda<Func<T, bool>>(exp, param);
         }
     }
