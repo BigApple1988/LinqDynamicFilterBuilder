@@ -32,7 +32,7 @@ namespace LinqDynamicFilterBuilder
                         exp = ExpressionExtractor.GetExpression<T>(param, expressionFilter);
                     else
                     {
-                        exp = Expression.And(exp, ExpressionExtractor.GetExpression<T>(param, expressionFilter));
+                        exp = Expression.AndAlso(exp, ExpressionExtractor.GetExpression<T>(param, expressionFilter));
                     }
                 }
             }
